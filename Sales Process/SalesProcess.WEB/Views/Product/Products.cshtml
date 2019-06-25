@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Products";
+}
+<script type="text/javascript" src="@Url.Content("~/Scripts/App/products.js")"></script>
+
+<div class="card-material">
+    <div class="buyers-head row">
+        <div class="col-sm-4 col-md-4">
+            <h5 class="page-title">Products</h5>
+        </div>
+        <div class="col-sm-8 col-md-8 text-right">
+            <button type="button"
+                    class="btn btn-outline-info custom-grid-btn"
+                    data-toggle="modal"
+                    data-target="#ProductsModal"
+                    onclick="AddProductModal(event)">
+                <i class="fas fa-plus-circle"></i> Create New Product
+            </button>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-cyan">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Product Code</th>
+                    <th>Product Unit</th>
+                    <th>Product Price</th>
+                    <th>Stock Quantity</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody class="products-list"></tbody>
+        </table>
+    </div>
+</div>
+@Html.Partial("_ProductModalWindow")
+

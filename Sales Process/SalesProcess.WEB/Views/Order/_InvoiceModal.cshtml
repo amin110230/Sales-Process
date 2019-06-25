@@ -1,0 +1,57 @@
+﻿@* Modal Screen *@
+<div class="modal fade" id="InvoiceModal" tabindex="-1" role="dialog" aria-labelledby="InvoiceModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute; right:5px;z-index:2;">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body">
+                <h3 class="text-center page-title">Sales Process System</h3>
+                <p class="text-center subtitle">Gulshan 1,Navana Tower (7th floor) 45, <br />Gulshan South C/A,Circle 1,<br />Dhaka, Bangladesh</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="text-left" style="font-size:12px;"><strong>Date: </strong><b id="today"></b></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-right" style="font-size:12px;"><b id="PaymentStatus" class="order-status-lbl"></b></p>
+                    </div>
+                </div>
+                <h5 class="text-center page-title">Order Summary</h5>
+                <hr />
+                <h5 class="text-center subtitle"><strong>Products</strong></h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm">
+                        <thead>
+                            <tr>
+                                <th style="width:5%;">Sl.</th>
+                                <th>Name</th>
+                                <th style="width:20%;" class="text-center">Quantity</th>
+                                <th style="width:20%;" class="text-center">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoiceOrderScreenProducts"></tbody>
+                    </table>
+                </div>
+                <br />
+                <h5 class="text-center subtitle"><strong>Buyers</strong></h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm">
+                        <thead>
+                            <tr>
+                                <th style="width:5%;">Sl.</th>
+                                <th>Name</th>
+                                <th style="width:20%;" class="text-center">Payable PCT(%)</th>
+                                <th style="width:20%;" class="text-center">Amount</th>
+                                <th style="width:20%;" class="text-center">Due</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoiceOrderScreenBuyers"></tbody>
+                    </table>
+                </div>
+                <div class="nb">
+                    <strong style="font-size:12px;">** Vat and taxes are included</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

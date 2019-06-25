@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Buyers";
+}
+<script type="text/javascript" src="@Url.Content("~/Scripts/App/buyers.js")"></script>
+
+<div class="card-material">
+    <div class="buyers-head row">
+        <div class="col-sm-4 col-md-4">
+            <h5 class="page-title">Buyers</h5>
+        </div>
+        <div class="col-sm-8 col-md-8 text-right">
+            <button type="button"
+                    class="btn btn-outline-info custom-grid-btn"
+                    data-toggle="modal"
+                    data-target="#BuyersModal"
+                    onclick="AddBuyerModal(event)">
+                <i class="fas fa-plus-circle"></i> Create New Buyer
+            </button>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-cyan">
+                <tr>
+                    <th>Buyer Name</th>
+                    <th>Buyer Code</th>
+                    <th>Buyer Region</th>
+                    <th>Buyer Mobile</th>
+                    <th>Buyer Email</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody class="buyers-list"></tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card-material" id="BuyersPaymentDetails" style="display:none;">
+    <div class="row">
+        <div class="col-md-12">
+            <a href="javascript:void(0)" class="page-close" onclick="ClosePaymentDetails()">&times;</a>
+        </div>
+    </div>
+    <input type="hidden" id="BuyersId" />
+    <h5 class="page-title text-center">Payemnts of <b class="buyers-name"></b></h5>
+    <div class="form-group row">
+        <label for="Payment" class="col-sm-1 col-form-label">Order</label>
+        <div class="col-sm-4">
+            <select class="selectpicker" id="ddlOrdersPayment" data-live-search="true" onchange="LoadPaymentLog()"></select>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-cyan">
+                <tr>
+                    <th>Order ID</th>
+                    <th class="text-center">Paid ON</th>
+                    <th class="text-center">Paid Amount</th>
+                    <th class="text-center">Total Bill</th>
+                </tr>
+            </thead>
+            <tbody id="PaymentLog"></tbody>
+        </table>
+    </div>
+</div>
+@Html.Partial("_BuyerModalWindow")

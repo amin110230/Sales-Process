@@ -1,0 +1,54 @@
+﻿@* Modal Screen *@
+<div class="modal fade" id="ProductsModal" tabindex="-1" role="dialog" aria-labelledby="ProductsModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ProductsModalTitle">New Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="ProductsId" />
+                    <div class="form-group row">
+                        <label for="productName" class="col-sm-4 col-form-label">Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ProductName" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="productCode" class="col-sm-4 col-form-label">Code</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ProductCode" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="productUnit" class="col-sm-4 col-form-label">Unit</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ProductUnit" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="productPrice" class="col-sm-4 col-form-label">Price</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="ProductPrice" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="stockQuantity" class="col-sm-4 col-form-label">Stock Quantity</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="StockQuantity" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="AddProduct" onclick="AddProduct(event)">Save</button>
+                <button type="button" class="btn btn-primary" id="UpdateProduct" onclick="EditProduct(event)">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+

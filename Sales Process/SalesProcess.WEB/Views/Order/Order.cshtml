@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Orders";
+}
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/App/orders.js")"></script>
+
+<div class="card-material">
+    <div class="buyers-head row">
+        <div class="col-sm-4 col-md-4">
+            <h5 class="page-title">Orders</h5>
+        </div>
+        <div class="col-sm-8 col-md-8 text-right">
+            <a href="@Url.Action("NewOrder", "Order")" class="btn btn-outline-info custom-grid-btn"><i class="fas fa-plus-circle"></i> Make an Order</a>
+        </div>
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-cyan">
+                <tr>
+                    <th>Order ID</th>
+                    <th class="text-center">Date</th>
+                    <th class="text-center">Total</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="orders-list"></tbody>
+        </table>
+    </div>
+</div>
+@Html.Partial("_InvoiceModal")

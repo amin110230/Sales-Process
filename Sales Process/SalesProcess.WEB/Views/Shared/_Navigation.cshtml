@@ -1,0 +1,33 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+    <div class="container">
+        @Html.ActionLink("Sales Process", "Order", "Order", new { area = "" }, new { @class = "navbar-brand" })
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarNavDropdown" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    @Html.ActionLink("Orders", "Order", "Order", null, new { @class = "nav-link active", @rel = "Orders" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Products", "Products", "Product", null, new { @class = "nav-link", @rel = "Products" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Buyers", "BuyersList", "Buyer", null, new { @class = "nav-link", @rel = "Buyers" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Payment", "Payment", "Order", null, new { @class = "nav-link", @rel = "Payment" })
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var bar = '@ViewBag.Title';
+        bar = bar === 'Place Order' ? 'Orders' : bar;
+        NavbarActive(bar);
+    });
+</script>
+

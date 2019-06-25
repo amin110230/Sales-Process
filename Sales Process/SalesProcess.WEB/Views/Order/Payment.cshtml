@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Payment";
+}
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/App/payment.js")"></script>
+
+<div class="card-material">
+    <h5 class="page-title text-center">Payments</h5>
+    <hr />
+    <div class="form-group row">
+        <label for="Payment" class="col-sm-2 col-form-label">Select Order:</label>
+        <div class="col-sm-5">
+            <select class="selectpicker" id="ddlOrders" data-live-search="true" onchange="ChangeOrder()"></select>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <h6 class="text-right"><strong>Order:&emsp;</strong> <span class="selected-order"></span></h6>
+        </div>
+        @*<div class="col-md-6">
+
+        </div>*@
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Buyer Name</th>
+                    <th class="text-center width-20">Total</th>
+                    <th class="text-center width-20">Paid</th>
+                    <th class="text-center width-20">Due</th>
+                    <th class="text-center width-20">Payment</th>
+                </tr>
+            </thead>
+            <tbody id="tblPayment"></tbody>
+        </table>
+    </div>
+    <div class="text-right">
+        <button class="btn btn-info" onclick="MakePayment(event)"><i class="fas fa-save"></i>&ensp;Save</button>
+    </div>
+</div>
+

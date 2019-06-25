@@ -1,0 +1,26 @@
+IF NOT EXISTS(SELECT * FROM sys.objects WHERE object_id=OBJECT_ID('Buyers'))
+BEGIN
+
+CREATE TABLE [dbo].[Buyers]
+(
+	Id BIGINT IDENTITY(1,1) NOT NULL,
+	BuyersName NVARCHAR(128) NOT NULL,
+	BuyersCode NVARCHAR(16) NOT NULL,
+	BuyersRegion NVARCHAR(32) NOT NULL,
+	BuyersMobile NVARCHAR(14) NOT NULL,
+	BuyersEmail NVARCHAR(32) NOT NULL,
+
+	PRIMARY KEY(Id)
+)
+END
+GO
+
+IF NOT EXISTS(SELECT * FROM sys.columns WHERE object_id=OBJECT_ID('Buyers') AND name='CreatedOn')
+BEGIN
+	ALTER TABLE Buyers ADD CreatedOn DATETIME NOT NULL DEFAULT GETDATE()
+END
+
+IF NOT EXISTS(SELECT * FROM sys.columns WHERE object_id=OBJECT_ID('Buyers') AND name='IsActive')
+BEGIN
+	ALTER TABLE Buyers ADD IsActive BIT DEFAULT 1 NOT NULL
+END
