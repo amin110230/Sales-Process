@@ -12,10 +12,10 @@ function LoadProducts() {
             $.each(data, function (i, item) {
                 var row = '<tr class="product_' + item.Id + '">';
                 row += '<td rel="ProductName">' + item.ProductName + '</td>';
-                row += '<td rel="ProductCode">' + item.ProductCode + '</td>';
-                row += '<td rel="ProductUnit">' + item.ProductUnit + '</td>';
-                row += '<td rel="ProductPrice">' + item.ProductPrice + '</td>';
-                row += '<td rel="StockQuantity">' + item.StockQuantity + '</td>';
+                row += '<td rel="ProductCode" class="text-center">' + item.ProductCode + '</td>';
+                row += '<td rel="ProductUnit" class="text-center">' + item.ProductUnit + '</td>';
+                row += '<td rel="ProductPrice" class="text-center">' + item.ProductPrice + '</td>';
+                row += '<td rel="StockQuantity" class="text-center">' + item.StockQuantity + '</td>';
                 row += '<td class="text-center">';
                 row += '<button class="btn btn-outline-primary btn-sm grid-action-button" data-toggle="modal" data-target="#ProductsModal" onclick="EditProductModal(event, ' + item.Id + ')">';
                 row += '<i class="far fa-edit"></i></button>';

@@ -109,3 +109,5 @@
     background-color: rgba(0,0,0,0.2);
 }
 .navbar-brand{text-transform: uppercase;}
+
+.cell-min{ min-width: 150px;}

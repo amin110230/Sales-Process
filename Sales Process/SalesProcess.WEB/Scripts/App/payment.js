@@ -38,7 +38,6 @@ function ChangeOrder() {
 }
 
 function LoadOrderDetails(id, orderId) {
-    $('.selected-order').text(orderId);
     $.ajax({
         type: 'GET',
         url: '/Order/GetBuyersOfOrder',
@@ -73,6 +72,10 @@ function LoadOrderDetails(id, orderId) {
             tablerows += '<td class="text-center" id="PaymentTotal_' + id + '"></td></tr>';
 
             $('#tblPayment').empty().append(tablerows);
+            if (record.length > 0)
+                $('#payment-entry').fadeIn();
+            else
+                $('#payment-entry').fadeOut();
         },
         error: function (resp) {
             console.log(resp);

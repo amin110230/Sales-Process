@@ -14,10 +14,10 @@ function LoadBuyers() {
             $.each(data, function (i, item) {
                 var row = '<tr class="buyer_' + item.Id + '">';
                 row += '<td rel="BuyersName">' + item.BuyersName + '</td>';
-                row += '<td rel="BuyersCode">' + item.BuyersCode + '</td>';
-                row += '<td rel="BuyersRegion">' + item.BuyersRegion + '</td>';
-                row += '<td rel="BuyersMobile">' + item.BuyersMobile + '</td>';
-                row += '<td rel="BuyersEmail">' + item.BuyersEmail + '</td>';
+                row += '<td rel="BuyersCode" class="text-center">' + item.BuyersCode + '</td>';
+                row += '<td rel="BuyersRegion" class="text-center">' + item.BuyersRegion + '</td>';
+                row += '<td rel="BuyersMobile" class="text-center">' + item.BuyersMobile + '</td>';
+                row += '<td rel="BuyersEmail" class="text-center">' + item.BuyersEmail + '</td>';
                 row += '<td class="text-center">';
                 row += '<button class="btn btn-outline-primary btn-sm" title="Payment Log" style="margin: 5px;" onclick="PaymentLog(event,' + item.Id + ',\''+item.BuyersName+'\')">';
                 row += '<i class="far fa-eye"></i></button>';
