@@ -10,6 +10,6 @@ AS
 
 SELECT * FROM Orders
 WHERE IsPaid = @pIsPaid OR @pIsPaid IS NULL
-ORDER BY OrderDate
+ORDER BY OrderDate DESC
 
 GO

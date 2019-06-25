@@ -56,7 +56,7 @@ function LoadOrderDetails(id, orderId) {
                 row += '<td class="text-center">' + data.PaidAmount + '</td>';
                 row += '<td class="text-center" id="DueAmount_' + data.Id + '">' + data.DueAmount + '</td>';
                 row += '<td class="text-center">';
-                row += '<input type="text" class="form-control payment-grid-input text-center" id="Payment_' + data.Id + '" onblur="CalculatePaymentTotal(event)"/>';
+                row += '<input type="number" class="form-control payment-grid-input text-center" id="Payment_' + data.Id + '" onblur="CalculatePaymentTotal(event)"/>';
                 row += '</td></tr>';
 
                 tablerows += row;

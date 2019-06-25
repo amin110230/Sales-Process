@@ -57,42 +57,77 @@ function EditBuyerModal(event, id) {
 }
 
 function AddBuyer(event) {
-    var buyer = {
-        Id: 0,
-        BuyersName: $('#BuyersName').val(),
-        BuyersCode: $('#BuyersCode').val(),
-        BuyersRegion: $('#BuyersRegion').val(),
-        BuyersMobile: $('#BuyersMobile').val(),
-        BuyersEmail: $('#BuyersEmail').val(),
-        IsActive: true,
-        CreatedOn: null
-    };
-    $.ajax({
-        type: 'POST',
-        url: '/Buyer/AddBuyer',
-        data: { buyer: buyer },
-        success: function (resp) {
-            $('#BuyersModal').modal('toggle');
-            toastr.options.positionClass = "toast-bottom-right";
-            toastr.success("Buyer has been added successfully!");
-            LoadBuyers();
-        },
-        error: function (resp) {
-            toastr.options.positionClass = "toast-bottom-right";
-            toastr.error("Oops! Something went wrong!");
-        }
-    });
+    var validation_out = ValidateBuyerCU();
+    if (validation_out !== 'VALID') {
+        AlertError(validation_out);
+        return false;
+    }
+    else {
+        var buyer = {
+            id: 0,
+            buyersname: $('#buyersname').val(),
+            buyerscode: $('#buyerscode').val(),
+            buyersregion: $('#buyersregion').val(),
+            buyersmobile: $('#buyersmobile').val(),
+            buyersemail: $('#buyersemail').val(),
+            isactive: true,
+            createdon: null
+        };
+        $.ajax({
+            type: 'post',
+            url: '/buyer/addbuyer',
+            data: { buyer: buyer },
+            success: function (resp) {
+                $('#buyersmodal').modal('toggle');
+                toastr.options.positionclass = "toast-bottom-right";
+                toastr.success("buyer has been added successfully!");
+                loadbuyers();
+            },
+            error: function (resp) {
+                toastr.options.positionclass = "toast-bottom-right";
+                toastr.error("oops! something went wrong!");
+            }
+        });
+    }
 }
 
-function PaymentLog(event, id, name) {
-    $('html, body').animate({
-        scrollTop: $("#BuyersPaymentDetails").offset().top
-    }, 500);
+//function AddBuyer(event) {
+//    var buyer = {
+//        Id: 0,
+//        BuyersName: $('#BuyersName').val(),
+//        BuyersCode: $('#BuyersCode').val(),
+//        BuyersRegion: $('#BuyersRegion').val(),
+//        BuyersMobile: $('#BuyersMobile').val(),
+//        BuyersEmail: $('#BuyersEmail').val(),
+//        IsActive: true,
+//        CreatedOn: null
+//    };
+//    $.ajax({
+//        type: 'POST',
+//        url: '/Buyer/AddBuyer',
+//        data: { buyer: buyer },
+//        success: function (resp) {
+//            $('#BuyersModal').modal('toggle');
+//            toastr.options.positionClass = "toast-bottom-right";
+//            toastr.success("Buyer has been added successfully!");
+//            LoadBuyers();
+//        },
+//        error: function (resp) {
+//            toastr.options.positionClass = "toast-bottom-right";
+//            toastr.error("Oops! Something went wrong!");
+//        }
+//    });
+//}
 
+function PaymentLog(event, id, name) { 
     $("#BuyersId").val(id);
     $(".buyers-name").text(name);
     $("#BuyersPaymentDetails").fadeIn();
     LoadOrdersByBuyers(id);
+
+    $('html, body').animate({
+        scrollTop: $("#BuyersPaymentDetails").offset().top
+    }, 500);
 }
 
 function ClosePaymentDetails() {
@@ -100,32 +135,40 @@ function ClosePaymentDetails() {
 }
 
 function EditBuyer(event) {
-    var buyer = {
-        Id: $('#BuyersId').val(),
-        BuyersName: $('#BuyersName').val(),
-        BuyersCode: $('#BuyersCode').val(),
-        BuyersRegion: $('#BuyersRegion').val(),
-        BuyersMobile: $('#BuyersMobile').val(),
-        BuyersEmail: $('#BuyersEmail').val(),
-        IsActive: true,
-        CreatedOn: null
-    };
-    $.ajax({
-        type: 'POST',
-        url: '/Buyer/UpdateBuyer',
-        data: { buyer: buyer },
-        success: function (resp) {
-            $('#BuyersModal').modal('toggle');
-            toastr.options.positionClass = "toast-bottom-right";
-            toastr.success("Buyer info updated successfully!");
+    var validation_out = ValidateBuyerCU();
+    if (validation_out !== 'VALID') {
+        AlertError(validation_out);
+        return false;
+    }
+    else {
 
-            LoadBuyers();
-        },
-        error: function (resp) {
-            toastr.options.positionClass = "toast-bottom-right";
-            toastr.error("Oops! Something went wrong!");
-        }
-    });
+        var buyer = {
+            Id: $('#BuyersId').val(),
+            BuyersName: $('#BuyersName').val(),
+            BuyersCode: $('#BuyersCode').val(),
+            BuyersRegion: $('#BuyersRegion').val(),
+            BuyersMobile: $('#BuyersMobile').val(),
+            BuyersEmail: $('#BuyersEmail').val(),
+            IsActive: true,
+            CreatedOn: null
+        };
+        $.ajax({
+            type: 'POST',
+            url: '/Buyer/UpdateBuyer',
+            data: { buyer: buyer },
+            success: function (resp) {
+                $('#BuyersModal').modal('toggle');
+                toastr.options.positionClass = "toast-bottom-right";
+                toastr.success("Buyer info updated successfully!");
+
+                LoadBuyers();
+            },
+            error: function (resp) {
+                toastr.options.positionClass = "toast-bottom-right";
+                toastr.error("Oops! Something went wrong!");
+            }
+        });
+    }
 }
 
 function DeleteBuyer(id, event) {
@@ -137,6 +180,7 @@ function DeleteBuyer(id, event) {
             data: { id: id },
             success: function (resp) {
                 $(event.target).closest('tr').remove();
+                ClosePaymentDetails();
                 toastr.options.positionClass = "toast-bottom-right";
                 toastr.success("Buyer has been removed successfully!");
             },
